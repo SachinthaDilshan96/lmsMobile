@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 const UserAllProgramScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>Login screen</Text>
+      <Text>User  screen</Text>
     </View>
   );
 };

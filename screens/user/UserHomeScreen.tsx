@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 const UserHomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <Text>Login screen</Text>
+      <Text>Home screen</Text>
+      <Button title={"Admin Dashboard"} onPress={()=>{navigation.navigate("AdminDashboard")}}/>
     </View>
   );
 };

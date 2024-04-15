@@ -8,6 +8,13 @@ import UserMyProgramScreen from './screens/user/UserMyProgramScreen.tsx';
 import UserPayementsScreen from './screens/user/UserPayementsScreen.tsx';
 import UserNotificationScreen from './screens/user/UserNotificationScreen.tsx';
 import {NavigationContainer} from '@react-navigation/native';
+import LoginScreen from "./screens/LoginScreen.tsx";
+import SignupScreen from "./screens/SignupScreen.tsx";
+import AdminHomeScreen from "./screens/admin/AdminHomeScreen.tsx";
+import AdminAllProgramsScreen from "./screens/admin/AdminAllProgramsScreen.tsx";
+import AdminSubjectScreen from "./screens/admin/AdminSubjectScreen.tsx";
+import AdminPayementsScreen from "./screens/admin/AdminPayementsScreen.tsx";
+import AdminDashboardScreen from "./screens/AdminDashboardScreen.tsx";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,28 +27,19 @@ function App(): React.JSX.Element {
             let iconName;
             switch (route.name) {
               case 'Home':
-                // @ts-ignore
                 iconName = focused ? 'home' : 'home';
                 break;
-              case 'All Programs':
-                // @ts-ignore
-                iconName = focused ? 'home' : 'home';
+              case 'Programs':
+                iconName = focused ? 'book' : 'book';
                 break;
               case 'My Programs':
-                // @ts-ignore
-                iconName = focused ? 'home' : 'home';
+                iconName = focused ? 'format-list-bulleted' : 'format-list-bulleted';
                 break;
               case 'Subjects':
-                // @ts-ignore
-                iconName = focused ? 'home' : 'home';
+                iconName = focused ? 'widgets' : 'widgets';
                 break;
               case 'Payments':
-                // @ts-ignore
-                iconName = focused ? 'home' : 'home';
-                break;
-              case 'Notifications':
-                // @ts-ignore
-                iconName = focused ? 'home' : 'home';
+                iconName = focused ? 'contactless-payment' : 'contactless-payment';
                 break;
             }
             return <Icon size={22} source={iconName} color={color} />;
@@ -55,7 +53,7 @@ function App(): React.JSX.Element {
           options={{headerShown: false}}
         />
         <Tab.Screen
-          name={'All Programs'}
+          name={'Programs'}
           component={UserAllProgramScreen}
           options={{headerShown: false}}
         />
@@ -74,19 +72,68 @@ function App(): React.JSX.Element {
           component={UserPayementsScreen}
           options={{headerShown: false}}
         />
+      </Tab.Navigator>
+    );
+  };
+  const AdminTabNavigator = () => {
+    return (
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+            switch (route.name) {
+              case 'Home':
+                // @ts-ignore
+                iconName = focused ? 'home' : 'home';
+                break;
+              case 'Programs':
+                // @ts-ignore
+                iconName = focused ? 'home' : 'home';
+                break;
+              case 'Subjects':
+                // @ts-ignore
+                iconName = focused ? 'home' : 'home';
+                break;
+              case 'Payments':
+                // @ts-ignore
+                iconName = focused ? 'home' : 'home';
+                break;
+            }
+            return <Icon size={22} source={iconName} color={color} />;
+          },
+          tabBarActiveTintColor: '#d35400',
+          tabBarInactiveTintColor: '#bdc3c7',
+        })}>
         <Tab.Screen
-          name={'Notifications'}
-          component={UserNotificationScreen}
+          name={'Home'}
+          component={AdminHomeScreen}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name={'Programs'}
+          component={AdminAllProgramsScreen}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name={'Subjects'}
+          component={AdminSubjectScreen}
+          options={{headerShown: false}}
+        />
+        <Tab.Screen
+          name={'Payments'}
+          component={AdminPayementsScreen}
           options={{headerShown: false}}
         />
       </Tab.Navigator>
     );
   };
-
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name={'UserDashboard'} component={UserTabNavigator} />
+        <Stack.Screen options={{headerShown:false}} name={'LoginScreen'} component={LoginScreen} />
+        <Stack.Screen options={{headerShown:false}} name={'SignupScreen'} component={SignupScreen} />
+        <Stack.Screen options={{headerShown:false}} name={'UserDashboard'} component={UserTabNavigator} />
+        <Stack.Screen options={{headerShown:false}} name={'AdminDashboard'} component={AdminTabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );
