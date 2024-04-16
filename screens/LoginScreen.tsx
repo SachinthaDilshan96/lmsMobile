@@ -20,12 +20,12 @@ const LoginScreen = ({navigation}) => {
         </View>
         <View>
           <TouchableOpacity style={styles.button}>
-            <Text style={{color: 'white'}}>Login</Text>
+            <Text onPress={()=>navigation.navigate("UserDashboard")} style={{color: 'white'}}>Login</Text>
           </TouchableOpacity>
         </View>
         <View>
-          <TouchableOpacity style={[styles.button,{backgroundColor: 'white'}]}>
-            <Text onPress={()=>navigation.navigate("SignupScreen")} style={{color: '#16a085', textDecorationLine: 'underline'}}>
+          <TouchableOpacity onPress={()=>navigation.navigate("SignupScreen")} style={[styles.button,{backgroundColor: 'white'}]}>
+            <Text style={{color: '#16a085', textDecorationLine: 'underline'}}>
               Don't have an account? Signup instead
             </Text>
           </TouchableOpacity>

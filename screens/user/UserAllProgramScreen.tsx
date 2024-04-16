@@ -1,18 +1,22 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import ProgramWidget from "../../widgets/ProgramWidget.tsx";
 
 const UserAllProgramScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Text>User  screen</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <ProgramWidget navigation={navigation} />
+      <ProgramWidget navigation={navigation} />
+      <ProgramWidget navigation={navigation} />
+      <ProgramWidget navigation={navigation} />
+      <ProgramWidget navigation={navigation} />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 10
   },
 });
 export default UserAllProgramScreen;

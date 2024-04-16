@@ -15,6 +15,7 @@ import AdminAllProgramsScreen from "./screens/admin/AdminAllProgramsScreen.tsx";
 import AdminSubjectScreen from "./screens/admin/AdminSubjectScreen.tsx";
 import AdminPayementsScreen from "./screens/admin/AdminPayementsScreen.tsx";
 import AdminDashboardScreen from "./screens/AdminDashboardScreen.tsx";
+import UserSubjectsScreen from "./screens/user/UserSubjectsScreen.tsx";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -55,17 +56,14 @@ function App(): React.JSX.Element {
         <Tab.Screen
           name={'Programs'}
           component={UserAllProgramScreen}
-          options={{headerShown: false}}
         />
         <Tab.Screen
           name={'My Programs'}
           component={UserMyProgramScreen}
-          options={{headerShown: false}}
         />
         <Tab.Screen
           name={'Subjects'}
-          component={UserAllProgramScreen}
-          options={{headerShown: false}}
+          component={UserSubjectsScreen}
         />
         <Tab.Screen
           name={'Payments'}
@@ -88,15 +86,15 @@ function App(): React.JSX.Element {
                 break;
               case 'Programs':
                 // @ts-ignore
-                iconName = focused ? 'home' : 'home';
+                iconName = focused ? 'book' : 'book';
                 break;
               case 'Subjects':
                 // @ts-ignore
-                iconName = focused ? 'home' : 'home';
+                iconName = focused ? 'widgets' : 'widgets';
                 break;
               case 'Payments':
                 // @ts-ignore
-                iconName = focused ? 'home' : 'home';
+                iconName = focused ? 'contactless-payment' : 'contactless-payment';
                 break;
             }
             return <Icon size={22} source={iconName} color={color} />;
